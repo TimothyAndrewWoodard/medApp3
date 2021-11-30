@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <header><link rel="stylesheet" href="medAppStyle3.css" /></header>
+  <body>
+    <div class="container">
+      <div class="d1">
+        demographics
+        <button onclick="newPatient()" id="newPatient">+ New Patient</button>
+        <button onclick="localStorage.clear()" id="clearPtData">
+          Clear Patient Data</button
+        ><br />
+        <!--<label for="search">Patient Search</label>-->
+        <input id="search" placeholder="Enter patient name" />
+
+        <button id="searchButton">search</button>
+
+        <p id="nameDisplay"></p>
+        <p id="ageDisplay"></p>
+
+        <!--<label for="search">patient search</label>
+        <input
+          type="search"
+          onsearch="findPatient()"
+          name="search"
+          id="search"
+        />-->
+      </div>
+      <div class="d2 flex-container">
+        current note
+        <button onclick="noteModal()" id="newNote">+ Add</button>
+        <div class="content">
+          <div class="current-note-sub content-1" id="subjective">
+            Subjective:
+          </div>
+          <div class="current-note-sub content-1" id="objective">
+            Objective:
+          </div>
+          <div class="current-note-sub content-1" id="assessment">
+            Assessment:
+          </div>
+          <div class="current-note-sub content-1" id="plan">Plan</div>
+        </div>
+      </div>
+      <div class="d3">
+        Problem-list
+        <button onclick="addProblem()" id="new problem">+ Add</button>
+        <div class="content">
+          <div class="problem">Problem:</div>
+          <div class="problem">Problem:</div>
+          <div class="problem">Problem:</div>
+          <div class="problem">PRoblem:</div>
+        </div>
+      </div>
+      <div class="d4 flex-container">
+        prescriptions
+        <button onclick="addPrescription()" id="new prescription">+ Add</button>
+        <div class="content" id="prescriptions">
+          <div class="prescription" id="prescription1">prescription1</div>
+          <div class="prescription" id="prescription2">prescription2</div>
+          <div class="prescription" id="prescription3">prescription3</div>
+          <div class="prescription" id="prescription4">prescription3</div>
+        </div>
+      </div>
+      <div class="d5 flex-container">
+        Previous Notes
+        <div class="content">
+          <div class="past-note" id="past-note1">Date: Complaint:</div>
+          <div class="past-note" id="past-note2">Date: Complaint:</div>
+          <div class="past-note" id="past-note3">Date: Complaint:</div>
+          <div class="past-note" id="past-note4">Date: Complaint:</div>
+        </div>
+      </div>
+    </div>
+    <div id="addPrescription" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span onclick="closePrescription()" class="close">&times;</span>
+        <form action="" method="post" id="prescriptionForm">
+          <label for="Drug"> Drug:</label>
+          <input
+            type="text"
+            id="Drug"
+            name="Drug"
+            type="text"
+            reqired
+            aria-required="true"
+          />
+
+          <label for="Dosage"> Dosage:</label>
+          <input
+            type="number"
+            id="Dosage"
+            name="Dosage"
+            required
+            aria-required="true"
+          />
+          <label for="measurement">Measurement</label>
+          <select id="measurement" name="measurement">
+            <option value="micrograms">micrograms</option>
+            <option value="milligrams">milligrams</option>
+            <option value="grams">grams</option>
+          </select>
+        </form>
+
+        <button
+          type="submit"
+          value="submit"
+          form="PrescriptionForm"
+          onclick="createPrescription(); closePrescription()"
+        >
+          + Create
+        </button>
+      </div>
+    </div>
+    <div id="noteModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span onclick="closeNote()" class="close">&times;</span>
+        <form action="" method="post" id="noteForm" name="noteform">
+          <label for="Date"> Date: </label>
+          <input
+            type="text"
+            id="Date"
+            name="Date"
+            reqired
+            aria-required="true"
+          />
+          <label for="complaint"> Complaint: </label>
+          <input
+            type="text"
+            id="complaint"
+            name="complaint"
+            reqired
+            aria-required="true"
+          />
+          <label for="subjective">Subjective</label>
+          <textarea id="subjective" name="subjective"></textarea>
+          <label for="objective">Objective</label>
+          <textarea id="objective" name="objective"></textarea>
+          <label for="assessment">Assessment</label>
+          <textarea id="assesment" name="assessment"></textarea>
+          <label for="plan">Plan</label>
+          <textarea id="plan" name="plan"></textarea>
+        </form>
+
+        <button onclick="createNote(), closeNote()">+ Create</button>
+      </div>
+    </div>
+    <div id="addProblem" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span onclick="closeProblem()" class="close">&times;</span>
+        <form action="" method="post" id="problemForm">
+          <label for="problem"> Problem:</label>
+          <input
+            type="text"
+            id="problemForm"
+            name="problemForm"
+            reqired
+            aria-required="true"
+          />
+        </form>
+
+        <button
+          type="submit"
+          value="submit"
+          form="problem"
+          onclick="closeProblem()"
+        >
+          + Create
+        </button>
+      </div>
+    </div>
+    <div id="newPtDemographics" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span onclick="closeDemo()" class="close">&times;</span>
+        <form action="" method="post" id="demoForm">
+          <label for="name"> Name:</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            reqired
+            aria-required="true"
+          />
+
+          <label for="age"> Age:</label>
+          <input
+            type="number"
+            id="age"
+            name="age"
+            reqired
+            aria-required="true"
+          />
+        </form>
+
+        <button onclick="createPatient(), closeDemo()">+ Create</button>
+      </div>
+    </div>
+    <script src="medAppFreshStart3.js"></script>
+  </body>
+</html>
